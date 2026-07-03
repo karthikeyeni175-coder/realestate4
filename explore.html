@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Location – LuxEstate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Specific Explore Page Styles */
+    body {
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    .explore-hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .explore-hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 120%;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+      transition: transform 0.1s linear;
+      filter: brightness(0.5);
+    }
+    
+    .explore-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--navy) 0%, transparent 60%);
+      z-index: 1;
+    }
+
+    .explore-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .explore-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      transform: translateY(50px);
+      opacity: 0;
+      animation: slideUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.3s;
+    }
+    
+    .explore-subtitle {
+      font-size: 1.3rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 2rem;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.5s;
+    }
+
+    /* Page Navigation */
+    .explore-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 22, 40, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 90;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.9s;
+    }
+    .explore-nav a {
+      color: var(--white-80);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+    .explore-nav a:hover {
+      color: var(--accent);
+    }
+
+    .explore-section {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 3;
+    }
+    .section-dark {
+      background: #060e1a;
+    }
+
+    .section-title-center {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      color: var(--white);
+    }
+    .section-title-center span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    /* Overview Section */
+    .details-glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 4rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .details-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    
+    .details-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--white-80);
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-box {
+      background: rgba(0,0,0,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      transition: transform 0.4s;
+    }
+    .stat-box:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+    
+    .stat-box h4 {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .stat-box p {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0;
+    }
+    .stat-box p span {
+      color: var(--accent);
+    }
+
+    /* Gallery Section */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 250px;
+      gap: 1rem;
+    }
+    .photo-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .photo-item:hover img {
+      transform: scale(1.1);
+    }
+    .photo-item.large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .photo-item.wide {
+      grid-column: span 2;
+    }
+
+    /* Video Tour */
+    .video-tour-wrap {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .video-tour-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(201, 168, 76, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--navy);
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.4s ease;
+      padding-left: 10px; /* Optical center for play icon */
+    }
+    .play-btn:hover {
+      background: var(--accent);
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 40px rgba(201, 168, 76, 0.6);
+    }
+
+    /* Advanced Floor Plans / AI Generator */
+    .ai-prompt-container textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1.1rem;
+      resize: vertical;
+      transition: border-color 0.3s;
+    }
+    .ai-prompt-container textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.08);
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 1s ease-in-out infinite;
+      margin: 0 auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .fp-wrapper {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .fp-tabs {
+      display: flex;
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .fp-tab {
+      flex: 1;
+      padding: 1.5rem;
+      background: transparent;
+      border: none;
+      color: var(--white-60);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    .fp-tab:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.02);
+    }
+    .fp-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .fp-content-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 4rem;
+      align-items: center;
+    }
+    
+    .fp-image-wrap {
+      position: relative;
+      border-radius: 16px;
+      padding: 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .fp-image-wrap.fade {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .fp-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%; height: 80%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .floor-plan-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 450px;
+      margin: 0 auto;
+      filter: invert(1) drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .fp-image-wrap:hover .floor-plan-img {
+      transform: scale(1.05);
+    }
+
+    .fp-info {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .fp-info.fade {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    .fp-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .fp-info p {
+      color: var(--white-80);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .fp-specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .fp-spec-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .fp-icon {
+      font-size: 2rem;
+      background: rgba(201,168,76,0.1);
+      width: 60px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .fp-spec-item div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .fp-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .fp-spec-item strong {
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+    .fp-btn {
+      width: 100%;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      background: var(--accent);
+      color: var(--navy);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .fp-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(201,168,76,0.3);
+    }
+
+    /* Neighborhood */
+    .neighborhood-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .map-placeholder {
+      width: 100%;
+      height: 400px;
+      background: url('difc.png') center/cover;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      filter: grayscale(0.8) contrast(1.2);
+    }
+    .places-list {
+      list-style: none;
+    }
+    .places-list li {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .places-list li:last-child {
+      border-bottom: none;
+    }
+    .place-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .place-dist {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--accent);
+      color: var(--navy);
+      padding: 1rem 3rem;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(201,168,76,0.4);
+      z-index: 100;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s;
+      opacity: 0;
+    }
+    .sticky-cta.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .sticky-cta:hover {
+      background: #e5c76b;
+      transform: translateX(-50%) translateY(-5px) scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .sticky-cta {
+        bottom: 1.5rem;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        width: 85%;
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+
+    @keyframes slideUp {
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 10;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 99px;
+      transition: all 0.3s;
+    }
+    .back-btn:hover {
+      background: rgba(201, 168, 76, 0.2);
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .details-glass-panel, .neighborhood-grid { grid-template-columns: 1fr; }
+      .explore-title { font-size: 3.5rem; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-item.large { grid-column: span 2; grid-row: span 1; }
+      .photo-item.wide { grid-column: span 2; }
+      
+      .fp-tabs { flex-direction: column; }
+      .fp-content-box { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+      .fp-image-wrap { padding: 1rem; }
+      .explore-nav { flex-wrap: wrap; gap: 1rem; padding: 1rem; }
+    }
+
+    @media (max-width: 600px) {
+      .explore-hero { height: 60vh; min-height: 400px; }
+      .explore-hero-bg { height: 100%; background-size: cover; background-position: center; }
+      .explore-title { font-size: 2.5rem; }
+      .explore-subtitle { font-size: 1rem; }
+      .explore-nav { gap: 0.8rem; justify-content: center; }
+      .explore-nav a { font-size: 0.8rem; }
+      .details-glass-panel { padding: 2rem 1.5rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-item.large, .photo-item.wide { grid-column: span 1; grid-row: auto; }
+      .video-tour-wrap { height: 300px; }
+      .play-btn { width: 60px; height: 60px; font-size: 1.5rem; padding-left: 5px; }
+      .fp-content-box { padding: 1.5rem; }
+      .map-placeholder { height: 250px; }
+      .fp-info h3 { font-size: 1.8rem; }
+      .fp-spec-item strong { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
+
+  <!-- HERO -->
+  <section class="explore-hero">
+    <div class="explore-hero-bg" id="heroBg"></div>
+    <div class="explore-hero-overlay"></div>
+    <div class="explore-content">
+      <div class="explore-subtitle" id="locSubtitle">Exclusive Area Insight</div>
+      <h1 class="explore-title" id="locTitle">Loading...</h1>
+    </div>
+  </section>
+
+  <!-- NAVIGATION -->
+  <nav class="explore-nav">
+    <a href="#overview">Overview</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#tour">Virtual Tour</a>
+    <a href="#floorplans">Floor Plans</a>
+    <a href="#neighborhood">Neighborhood</a>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section class="explore-section" id="overview">
+    <div class="container">
+      <div class="details-glass-panel reveal">
+        <div class="details-text"> 
+          <h3>The Pinnacle of Luxury</h3>
+          <p id="locDesc">Experience unmatched elegance and breathtaking views. This location is curated for those who demand the finest in life, offering a blend of modern architecture and serene environments.</p>
+          <p>Discover an unparalleled lifestyle with world-class dining, retail, and leisure facilities right at your doorstep. A true masterpiece of urban living with unparalleled attention to detail.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h4>Avg. Price</h4>
+            <p id="locPrice"><span>AED</span> 4.5M</p>
+          </div>
+          <div class="stat-box">
+            <h4>Expected ROI</h4>
+            <p id="locRoi">7.2<span>%</span></p>
+          </div>
+          <div class="stat-box">
+            <h4>Properties</h4>
+            <p id="locCount">120<span>+</span></p>
+          </div>
+          <div class="stat-box">
+            <h4>Capital Growth</h4>
+            <p>12<span>%</span></p>
+          </div>
+          <div class="stat-box">
+            <h4>Service Charge</h4>
+            <p>AED 24<span>/sqft</span></p>
+          </div>
+          <div class="stat-box">
+            <h4>Demand Level</h4>
+            <p style="color:#22c55e">Very High</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="explore-section section-dark" id="gallery">
+    <div class="container">
+      <h2 class="section-title-center reveal">Visual <span>Showcase</span></h2>
+      <div class="photo-grid reveal">
+        <div class="photo-item large">
+          <img src="hero.png" alt="Gallery Image 1">
+        </div>
+        <div class="photo-item">
+          <img src="villa.png" alt="Gallery Image 2">
+        </div>
+        <div class="photo-item">
+          <img src="difc.png" alt="Gallery Image 3">
+        </div>
+        <div class="photo-item wide">
+          <img src="marina.png" alt="Gallery Image 4">
+        </div>
+        <div class="photo-item">
+          <img src="jumeirah.png" alt="Gallery Image 5">
+        </div>
+        <div class="photo-item">
+          <img src="penthouse.png" alt="Gallery Image 6">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIRTUAL TOUR -->
+  <section class="explore-section" id="tour">
+    <div class="container">
+      <h2 class="section-title-center reveal">Immersive <span>3D Tour</span></h2>
+      <div class="video-tour-wrap reveal">
+        <img src="penthouse.png" alt="Video Thumbnail">
+        <div class="play-btn">▶</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI BLUEPRINT GENERATOR -->
+  <section class="explore-section section-dark" id="floorplans">
+    <div class="container">
+      <h2 class="section-title-center reveal">AI Property <span>Blueprint</span></h2>
+      
+      <div class="fp-wrapper reveal">
+        <div class="fp-tabs">
+          <button class="fp-tab active" id="tabBlueprint">Blueprint View</button>
+          <button class="fp-tab" id="tabProperty">Property View</button>
+        </div>
+
+        <div class="fp-content-box">
+          <div class="fp-image-wrap" id="fpImgWrap" style="position: relative; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+            <div class="fp-glow"></div>
+            <img id="generatedImg" src="floorplan1.png" alt="Generated Layout" class="floor-plan-img" style="transition: opacity 0.4s ease;">
+            
+            <div id="aiLoading" style="display: none; position: absolute; inset: 0; background: rgba(6, 14, 26, 0.85); backdrop-filter: blur(5px); border-radius: 16px; z-index: 10; flex-direction: column; align-items: center; justify-content: center;">
+              <div class="spinner"></div>
+              <p style="color: var(--accent); margin-top: 1.5rem; font-family: 'Playfair Display', serif; font-size: 1.5rem;">Designing...</p>
+            </div>
+          </div>
+          
+          <div class="fp-info" id="fpInfoWrap">
+            <h3 style="font-size: 2.2rem; margin-bottom: 1rem;">Design Your Dream Home</h3>
+            <p style="margin-bottom: 1.5rem;">Describe your ideal home layout. Our advanced AI will generate a custom blueprint and a realistic 3D property view tailored to your specifications.</p>
+            
+            <div class="ai-prompt-container" style="margin-bottom: 2rem;">
+              <textarea id="aiPrompt" placeholder="e.g. A 4-bedroom modern villa with an open kitchen, expansive balcony, and floor-to-ceiling windows..." rows="4"></textarea>
+            </div>
+
+            <button id="generateBtn" class="fp-btn">✨ Generate Design</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOOD -->
+  <section class="explore-section" id="neighborhood">
+    <div class="container">
+      <h2 class="section-title-center reveal">The <span>Neighborhood</span></h2>
+      <div class="neighborhood-grid reveal">
+        <div class="map-placeholder"></div>
+        <div class="neighborhood-details">
+          <p style="color: var(--white-80); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">
+            Perfectly situated in the heart of the city, this location offers unparalleled connectivity and access to world-class amenities. Everything you need is just moments away.
+          </p>
+          <ul class="places-list">
+            <li>
+              <span class="place-name">🛫 Dubai International Airport</span>
+              <span class="place-dist">15 mins</span>
+            </li>
+            <li>
+              <span class="place-name">🛍️ The Dubai Mall</span>
+              <span class="place-dist">5 mins</span>
+            </li>
+            <li>
+              <span class="place-name">🎓 International Schools</span>
+              <span class="place-dist">10 mins</span>
+            </li>
+            <li>
+              <span class="place-name">🏥 Prime Healthcare Hospital</span>
+              <span class="place-dist">8 mins</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="#" class="sticky-cta" id="stickyCta">Book now</a>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="propertyModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-body">
+        <h2>Schedule a Viewing</h2>
+        <p>Fill in your details and we'll get back to you within 2 hours.</p>
+        <form id="modalForm">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="tel" placeholder="Phone Number" />
+          <input type="date" />
+          <button type="submit" class="btn-primary full-width">Book Viewing</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ---- CUSTOM CURSOR ---- */
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursorDot');
+    let mx = 0, my = 0, cx = 0, cy = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursorDot.style.left = mx + 'px';
+      cursorDot.style.top = my + 'px';
+    });
+    (function animCursor() {
+      cx += (mx - cx) * 0.12;
+      cy += (my - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(animCursor);
+    })();
+
+    // Hover grow for links and buttons
+    document.querySelectorAll('a, button, .photo-item, .stat-box, .play-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+
+    // Data mapping for locations
+    const locData = {
+      difc: { title: 'DIFC', img: 'difc.png', price: '6.2M', roi: '5.8', count: '120', desc: 'The heart of financial luxury. DIFC offers an upscale urban lifestyle with some of the best art galleries, fine dining, and corporate hubs in Dubai.' },
+      marina: { title: 'Dubai Marina', img: 'marina.png', price: '3.1M', roi: '6.5', count: '85', desc: 'Waterfront living at its finest. Experience the vibrant yacht club, endless promenades, and stunning sunset views from your balcony.' },
+      palm: { title: 'Palm Jumeirah', img: 'villa.png', price: '12.5M', roi: '4.2', count: '64', desc: 'Exclusive island residences. A world-renowned destination offering private pristine beaches, luxury resorts, and ultra-luxury villas.' },
+      jvc: { title: 'JVC', img: 'jumeirah.png', price: '1.2M', roi: '8.1', count: '210', desc: 'A serene garden community perfect for families. JVC offers high ROI, abundant green parks, and fantastic community amenities.' },
+      mirdif: { title: 'Mirdif Hills', img: 'penthouse.png', price: '2.8M', roi: '6.0', count: '47', desc: 'A peaceful suburban haven with spacious properties. Ideal for those seeking tranquility, family-friendly parks, and closeness to the city.' },
+      downtown: { title: 'Downtown Dubai', img: 'hero.png', price: '4.8M', roi: '5.5', count: '93', desc: 'The center of now. Home to the iconic Burj Khalifa and Dubai Mall, offering a vibrant, luxurious, and cosmopolitan lifestyle.' }
+    };
+
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const locKey = urlParams.get('loc') || 'downtown';
+    const data = locData[locKey] || locData.downtown;
+
+    // Populate data
+    document.getElementById('locTitle').textContent = data.title;
+    document.getElementById('heroBg').style.backgroundImage = `url('${data.img}')`;
+    document.getElementById('locDesc').textContent = data.desc;
+    document.getElementById('locPrice').innerHTML = `<span>AED</span> ${data.price}`;
+    document.getElementById('locRoi').innerHTML = `${data.roi}<span>%</span>`;
+    document.getElementById('locCount').innerHTML = `${data.count}<span>+</span>`;
+
+    // Parallax effect on scroll
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const heroBg = document.getElementById('heroBg');
+      if (scrollY < window.innerHeight) {
+        heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+      }
+
+      // Sticky CTA reveal
+      const cta = document.getElementById('stickyCta');
+      if (scrollY > 500) {
+        cta.classList.add('visible');
+      } else {
+        cta.classList.remove('visible');
+      }
+    });
+
+    /* ---- BOOKING MODAL ---- */
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal() {
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if(this.getAttribute('href') !== '#') {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Reveal animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+      observer.observe(el);
+    });
+
+    /* ---- AI BLUEPRINT GENERATOR ---- */
+    const generateBtn = document.getElementById('generateBtn');
+    const aiPrompt = document.getElementById('aiPrompt');
+    const aiLoading = document.getElementById('aiLoading');
+    const tabBlueprint = document.getElementById('tabBlueprint');
+    const tabProperty = document.getElementById('tabProperty');
+    const generatedImg = document.getElementById('generatedImg');
+
+    const images = {
+      blueprint: 'floorplan3.png', // A different floorplan to feel generated
+      property: 'villa.png' // Corresponding property view
+    };
+
+    if (generateBtn) {
+      generateBtn.addEventListener('click', () => {
+        if (!aiPrompt.value.trim()) {
+          aiPrompt.style.borderColor = 'red';
+          setTimeout(() => aiPrompt.style.borderColor = 'rgba(255,255,255,0.1)', 1000);
+          return;
+        }
+        
+        // Show loading overlay
+        aiLoading.style.display = 'flex';
+
+        // Simulate API call to generate image
+        setTimeout(() => {
+          aiLoading.style.display = 'none';
+          
+          // Reset to blueprint view
+          tabBlueprint.classList.add('active');
+          tabProperty.classList.remove('active');
+          generatedImg.src = images.blueprint;
+          generatedImg.style.filter = 'invert(1) drop-shadow(0 10px 20px rgba(0,0,0,0.5))'; // Apply blueprint filter
+        }, 2500); // 2.5s generation delay
+      });
+    }
+
+    tabBlueprint.addEventListener('click', () => {
+      tabBlueprint.classList.add('active');
+      tabProperty.classList.remove('active');
+      generatedImg.style.opacity = '0';
+      setTimeout(() => {
+        generatedImg.src = images.blueprint;
+        generatedImg.style.filter = 'invert(1) drop-shadow(0 10px 20px rgba(0,0,0,0.5))'; // Blueprint styling
+        generatedImg.style.opacity = '1';
+      }, 300);
+    });
+
+    tabProperty.addEventListener('click', () => {
+      tabProperty.classList.add('active');
+      tabBlueprint.classList.remove('active');
+      generatedImg.style.opacity = '0';
+      setTimeout(() => {
+        generatedImg.src = images.property;
+        generatedImg.style.filter = 'none'; // Remove blueprint styling for property view
+        generatedImg.style.opacity = '1';
+      }, 300);
+    });
+    document.getElementById('stickyCta')?.addEventListener('click', e => {
+      e.preventDefault();
+      openModal();
+    });
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('modalForm')?.addEventListener('submit', e => {
+      e.preventDefault();
+      closeModal();
+      showToast("✓ Viewing booked! We'll confirm within 2 hours.");
+    });
+
+    function showToast(message) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 5rem; left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(13,31,60,0.97);
+        border: 1px solid rgba(201,168,76,0.4);
+        color: #fff;
+        padding: 0.85rem 1.8rem;
+        border-radius: 99px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        z-index: 9999;
+        opacity: 0;
+        transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        white-space: nowrap;
+      `;
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) translateY(0)';
+      });
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>

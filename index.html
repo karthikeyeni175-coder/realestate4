@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxEstate – Turning Your Dream Home Into Reality</title>
+  <meta name="description"
+    content="LuxEstate – Premium real estate agency offering luxury apartments, villas and penthouses in Dubai and beyond." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">LuxEstate</div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text" id="loaderText">Loading...</div>
+    </div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span>LuxEstate</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#locations" class="nav-link">Locations</a></li>
+         <li><a href="#properties" class="nav-link">Properties</a></li>
+        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-outline" id="loginBtn">Sign In</button>
+        <button class="btn-primary" id="listBtn">Book Now</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="difc.png" alt="Luxury Building" class="hero-img" id="heroImg" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge animate-fade-up" style="animation-delay:0.2s">
+        <span class="badge-dot"></span> #1 Luxury Real Estate Platform
+      </div>
+      <h1 class="hero-title animate-fade-up" style="animation-delay:0.4s">
+        Turning Your <br>
+        <em>Dream Home</em><br>
+        Into Reality
+      </h1>
+      <p class="hero-subtitle animate-fade-up" style="animation-delay:0.6s">
+        Whether you're in the market for your first home, looking to make an investment, or chasing that dream vacation
+        property, we're here to guide you every step of the way.
+      </p>
+      <div class="hero-actions animate-fade-up" style="animation-delay:0.8s">
+        <a href="#properties" class="btn-primary" style="text-decoration: none; display: inline-block;">Explore Properties</a>
+        <a href="#contact" class="btn-outline-lg" style="text-decoration: none; display: inline-block;">Contact an Agent</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== ABOUT / WHY US ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title">Ultimate In <em>Luxury Living</em></h2>
+        <p class="section-desc">Our dedicated team has been helping families, individuals, and investors find their
+          ideal properties for over 20 years. Our deep local knowledge and commitment to personalized service sets us
+          apart.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal" style="transition-delay:0.1s">
+          <div class="feature-icon">🏙️</div>
+          <h3>Local Expertise</h3>
+          <p>Profound Understanding Of The Local Real Estate Market</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.2s">
+          <div class="feature-icon">🛡️</div>
+          <h3>Trustworthiness</h3>
+          <p>A History Of Transparent And Reliable Service</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.3s">
+          <div class="feature-icon">✨</div>
+          <h3>Customized Service</h3>
+          <p>Catering To Each Client's Unique Needs</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.4s">
+          <div class="feature-icon">⚡</div>
+          <h3>Cutting-Edge Tools</h3>
+          <p>Utilizing The Latest Technology For Seamless Transactions</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.5s">
+          <div class="feature-icon">💳</div>
+          <h3>Easy Payment</h3>
+          <p>With An Easy Payment Method That Makes It Easy</p>
+        </div>
+        <div class="feature-card reveal" style="transition-delay:0.6s">
+          <div class="feature-icon">🕐</div>
+          <h3>24-h Consultant</h3>
+          <p>We Provide You With 24 Hours Consulting Services</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS SPEEDOMETER ========== -->
+  <section class="stats-section" id="statsSection">
+    <div class="stats-bg-glow"></div>
+    <div class="container">
+      <div class="stats-grid">
+
+        <!-- Card 1 -->
+        <div class="stats-card" data-target="5000" data-suffix="+" data-pct="85">
+          <div class="sc-gauge-wrap">
+            <svg class="sc-gauge" viewBox="0 0 200 120">
+              <path class="sc-gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <path class="sc-gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <!-- Tick marks -->
+              <g class="sc-ticks"></g>
+              <!-- Needle -->
+              <line class="sc-needle" x1="100" y1="100" x2="100" y2="30" />
+              <circle class="sc-needle-dot" cx="100" cy="100" r="6" />
+            </svg>
+          </div>
+          <div class="sc-value">
+            <span class="sc-icon">🏠</span>
+            <span class="sc-num" data-target="5000">0</span><span class="sc-suffix">+</span>
+          </div>
+          <span class="sc-label">Properties Listed</span>
+          <div class="sc-glow"></div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="stats-card" data-target="98" data-suffix="%" data-pct="98">
+          <div class="sc-gauge-wrap">
+            <svg class="sc-gauge" viewBox="0 0 200 120">
+              <path class="sc-gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <path class="sc-gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <g class="sc-ticks"></g>
+              <line class="sc-needle" x1="100" y1="100" x2="100" y2="30" />
+              <circle class="sc-needle-dot" cx="100" cy="100" r="6" />
+            </svg>
+          </div>
+          <div class="sc-value">
+            <span class="sc-icon">⭐</span>
+            <span class="sc-num" data-target="98">0</span><span class="sc-suffix">%</span>
+          </div>
+          <span class="sc-label">Client Satisfaction</span>
+          <div class="sc-glow"></div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="stats-card" data-target="20" data-suffix="+" data-pct="75">
+          <div class="sc-gauge-wrap">
+            <svg class="sc-gauge" viewBox="0 0 200 120">
+              <path class="sc-gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <path class="sc-gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <g class="sc-ticks"></g>
+              <line class="sc-needle" x1="100" y1="100" x2="100" y2="30" />
+              <circle class="sc-needle-dot" cx="100" cy="100" r="6" />
+            </svg>
+          </div>
+          <div class="sc-value">
+            <span class="sc-icon">🏆</span>
+            <span class="sc-num" data-target="20">0</span><span class="sc-suffix">+</span>
+          </div>
+          <span class="sc-label">Years Experience</span>
+          <div class="sc-glow"></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="stats-card" data-target="150" data-suffix="+" data-pct="90">
+          <div class="sc-gauge-wrap">
+            <svg class="sc-gauge" viewBox="0 0 200 120">
+              <path class="sc-gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <path class="sc-gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
+              <g class="sc-ticks"></g>
+              <line class="sc-needle" x1="100" y1="100" x2="100" y2="30" />
+              <circle class="sc-needle-dot" cx="100" cy="100" r="6" />
+            </svg>
+          </div>
+          <div class="sc-value">
+            <span class="sc-icon">👥</span>
+            <span class="sc-num" data-target="150">0</span><span class="sc-suffix">+</span>
+          </div>
+          <span class="sc-label">Expert Agents</span>
+          <div class="sc-glow"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOCATIONS ========== -->
+  <section class="locations" id="locations">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Explore Areas</span>
+        <h2 class="section-title">Selling Dubai's <em>Top Residences</em></h2>
+        <a href="#" class="see-more-link">See more →</a>
+      </div>
+
+      <div class="locations-grid reveal">
+        <div class="location-card large" style="background-image: url('difc.png')">
+          <div class="loc-overlay"></div>
+          <div class="loc-info">
+            <h3>DIFC</h3>
+            <span class="loc-count">120 Properties</span>
+          </div>
+          <a href="explore.html?loc=difc" class="loc-hover-btn">Explore →</a>
+        </div>
+        <div class="location-card" style="background-image: url('marina.png')">
+          <div class="loc-overlay"></div>
+          <div class="loc-info">
+            <h3>Dubai Marina</h3>
+            <span class="loc-count">85 Properties</span>
+          </div>
+          <a href="explore.html?loc=marina" class="loc-hover-btn">Explore →</a>
+        </div>
+        <div class="location-card" style="background-image: url('villa.png')">
+          <div class="loc-overlay"></div>
+          <div class="loc-info">
+            <h3>Palm Jumeirah</h3>
+            <span class="loc-count">64 Properties</span>
+          </div>
+          <a href="explore.html?loc=palm" class="loc-hover-btn">Explore →</a>
+        </div>
+        <div class="location-card" style="background-image: url('jumeirah.png')">
+          <div class="loc-overlay"></div>
+          <div class="loc-info">
+            <h3>Jumeirah Village Circle</h3>
+            <span class="loc-count">210 Properties</span>
+          </div>
+          <a href="explore.html?loc=jvc" class="loc-hover-btn">Explore →</a>
+        </div>
+        <div class="location-card" style="background-image: url('penthouse.png')">
+          <div class="loc-overlay"></div>
+          <div class="loc-info">
+            <h3>Mirdif Hills</h3>
+            <span class="loc-count">47 Properties</span>
+          </div>
+          <a href="explore.html?loc=mirdif" class="loc-hover-btn">Explore →</a>
+        </div>
+        <div class="location-card" style="background-image: url('hero.png')">
+          <div class="loc-overlay"></div>
+          <div class="loc-info">
+            <h3>Downtown Dubai</h3>
+            <span class="loc-count">93 Properties</span>
+          </div>
+          <a href="explore.html?loc=downtown" class="loc-hover-btn">Explore →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROPERTIES ========== -->
+  <section class="properties" id="properties">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Featured</span>
+        <h2 class="section-title">Find Your <em>Dream House</em></h2>
+      </div>
+
+      
+
+      <!-- Properties Grid -->
+      <div class="prop-grid" id="propGrid">
+
+        <div class="prop-card reveal" data-category="penthouse">
+          <div class="prop-img-wrap">
+            <img src="penthouse.png" alt="The Atlantis Penthouse" loading="lazy" />
+            <div class="prop-badge">Premium</div>
+            <button class="prop-wishlist" aria-label="Add to wishlist">♡</button>
+            <div class="prop-overlay">
+              <button class="prop-view-btn">View Details</button>
+            </div>
+          </div>
+          <div class="prop-body">
+            <div class="prop-rating">⭐ <span>4.9</span> <em>(32 reviews)</em></div>
+            <h3 class="prop-title">The Atlantis</h3>
+            <p class="prop-location">📍 United Arab Emirates, Dubai</p>
+            <div class="prop-specs">
+              <span>📐 250 m²</span>
+              <span>🛏 3 Bedrooms</span>
+              <span>🚿 3 Bathrooms</span>
+            </div>
+            <div class="prop-footer">
+              <div class="prop-price">AED <strong>2,400,000</strong></div>
+              <button class="prop-cta">Enquire →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prop-card reveal" data-category="apartment" style="transition-delay:0.15s">
+          <div class="prop-img-wrap">
+            <img src="difc.png" alt="Four Seasons Residence" loading="lazy" />
+            <div class="prop-badge new">New</div>
+            <button class="prop-wishlist" aria-label="Add to wishlist">♡</button>
+            <div class="prop-overlay">
+              <button class="prop-view-btn">View Details</button>
+            </div>
+          </div>
+          <div class="prop-body">
+            <div class="prop-rating">⭐ <span>4.8</span> <em>(28 reviews)</em></div>
+            <h3 class="prop-title">Four Seasons</h3>
+            <p class="prop-location">📍 United Arab Emirates, Dubai</p>
+            <div class="prop-specs">
+              <span>📐 310 m²</span>
+              <span>🛏 3 Bedrooms</span>
+              <span>🚿 2 Bathrooms</span>
+            </div>
+            <div class="prop-footer">
+              <div class="prop-price">AED <strong>3,100,000</strong></div>
+              <button class="prop-cta">Enquire →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prop-card reveal" data-category="villa" style="transition-delay:0.3s">
+          <div class="prop-img-wrap">
+            <img src="villa.png" alt="W Residence Villa" loading="lazy" />
+            <div class="prop-badge">Hot Deal</div>
+            <button class="prop-wishlist" aria-label="Add to wishlist">♡</button>
+            <div class="prop-overlay">
+              <button class="prop-view-btn">View Details</button>
+            </div>
+          </div>
+          <div class="prop-body">
+            <div class="prop-rating">⭐ <span>4.7</span> <em>(19 reviews)</em></div>
+            <h3 class="prop-title">W Residence</h3>
+            <p class="prop-location">📍 United Arab Emirates, Dubai</p>
+            <div class="prop-specs">
+              <span>📐 420 m²</span>
+              <span>🛏 2 Bedrooms</span>
+              <span>🚿 2 Bathrooms</span>
+            </div>
+            <div class="prop-footer">
+              <div class="prop-price">AED <strong>4,750,000</strong></div>
+              <button class="prop-cta">Enquire →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prop-card reveal" data-category="apartment" style="transition-delay:0.1s">
+          <div class="prop-img-wrap">
+            <img src="marina.png" alt="Marina Heights" loading="lazy" />
+            <button class="prop-wishlist" aria-label="Add to wishlist">♡</button>
+            <div class="prop-overlay">
+              <button class="prop-view-btn">View Details</button>
+            </div>
+          </div>
+          <div class="prop-body">
+            <div class="prop-rating">⭐ <span>4.6</span> <em>(41 reviews)</em></div>
+            <h3 class="prop-title">Marina Heights</h3>
+            <p class="prop-location">📍 Dubai Marina, Dubai</p>
+            <div class="prop-specs">
+              <span>📐 185 m²</span>
+              <span>🛏 2 Bedrooms</span>
+              <span>🚿 2 Bathrooms</span>
+            </div>
+            <div class="prop-footer">
+              <div class="prop-price">AED <strong>1,850,000</strong></div>
+              <button class="prop-cta">Enquire →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prop-card reveal" data-category="villa" style="transition-delay:0.25s">
+          <div class="prop-img-wrap">
+            <img src="jumeirah.png" alt="JVC Villa" loading="lazy" />
+            <div class="prop-badge new">New</div>
+            <button class="prop-wishlist" aria-label="Add to wishlist">♡</button>
+            <div class="prop-overlay">
+              <button class="prop-view-btn">View Details</button>
+            </div>
+          </div>
+          <div class="prop-body">
+            <div class="prop-rating">⭐ <span>4.5</span> <em>(14 reviews)</em></div>
+            <h3 class="prop-title">JVC Garden Villa</h3>
+            <p class="prop-location">📍 Jumeirah Village Circle, Dubai</p>
+            <div class="prop-specs">
+              <span>📐 380 m²</span>
+              <span>🛏 4 Bedrooms</span>
+              <span>🚿 3 Bathrooms</span>
+            </div>
+            <div class="prop-footer">
+              <div class="prop-price">AED <strong>3,600,000</strong></div>
+              <button class="prop-cta">Enquire →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prop-card reveal" data-category="penthouse" style="transition-delay:0.4s">
+          <div class="prop-img-wrap">
+            <img src="hero.png" alt="Downtown Sky Penthouse" loading="lazy" />
+            <div class="prop-badge">Exclusive</div>
+            <button class="prop-wishlist" aria-label="Add to wishlist">♡</button>
+            <div class="prop-overlay">
+              <button class="prop-view-btn">View Details</button>
+            </div>
+          </div>
+          <div class="prop-body">
+            <div class="prop-rating">⭐ <span>5.0</span> <em>(7 reviews)</em></div>
+            <h3 class="prop-title">Downtown Sky Penthouse</h3>
+            <p class="prop-location">📍 Downtown Dubai, Dubai</p>
+            <div class="prop-specs">
+              <span>📐 620 m²</span>
+              <span>🛏 5 Bedrooms</span>
+              <span>🚿 5 Bathrooms</span>
+            </div>
+            <div class="prop-footer">
+              <div class="prop-price">AED <strong>9,900,000</strong></div>
+              <button class="prop-cta">Enquire →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="load-more-wrap reveal">
+        <button class="btn-outline-lg" id="loadMoreBtn">Load More Properties</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LIVE MARKET PULSE ========== -->
+  <section class="market-pulse" id="market">
+    <!-- Ticker Strip -->
+    <div class="ticker-wrap">
+      <div class="ticker-label">🔴 LIVE</div>
+      <div class="ticker-track" id="tickerTrack">
+        <div class="ticker-inner" id="tickerInner"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag pulse-tag">⚡ Real-Time Data</span>
+        <h2 class="section-title">Live <em>Market Pulse</em></h2>
+        <p class="section-desc">Dubai's property market — live, beating, and right in front of you.</p>
+      </div>
+
+      <!-- Market Stats -->
+      <div class="pulse-stats reveal">
+        <div class="pulse-stat-card">
+          <div class="psc-icon">📈</div>
+          <div class="psc-body">
+            <span class="psc-label">Market Index</span>
+            <span class="psc-value" id="mktIndex">2,847</span>
+            <span class="psc-change up" id="mktChange">+2.4%</span>
+          </div>
+        </div>
+        <div class="pulse-stat-card">
+          <div class="psc-icon">🏠</div>
+          <div class="psc-body">
+            <span class="psc-label">Avg Price / sqft</span>
+            <span class="psc-value" id="avgPrice">AED 1,342</span>
+            <span class="psc-change up" id="avgChange">+1.1%</span>
+          </div>
+        </div>
+        <div class="pulse-stat-card">
+          <div class="psc-icon">🔄</div>
+          <div class="psc-body">
+            <span class="psc-label">Transactions Today</span>
+            <span class="psc-value" id="txCount">148</span>
+            <span class="psc-change up" id="txChange">+18 this hour</span>
+          </div>
+        </div>
+        <div class="pulse-stat-card">
+          <div class="psc-icon">💰</div>
+          <div class="psc-body">
+            <span class="psc-label">Total Volume</span>
+            <span class="psc-value" id="totalVol">AED 892M</span>
+            <span class="psc-change down" id="volChange">-0.8%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart + Heatmap -->
+      <div class="pulse-main reveal">
+        <!-- Live Chart -->
+        <div class="pulse-chart-wrap">
+          <div class="pcw-header">
+            <span class="pcw-title">Dubai Market Trend</span>
+            <div class="pcw-tabs">
+              <button class="pcw-tab active" data-period="1D">1D</button>
+              <button class="pcw-tab" data-period="1W">1W</button>
+              <button class="pcw-tab" data-period="1M">1M</button>
+              <button class="pcw-tab" data-period="1Y">1Y</button>
+            </div>
+          </div>
+          <canvas id="marketChart" width="600" height="220"></canvas>
+          <div class="chart-live-dot"><span></span> Live</div>
+          <!-- Chart hover crosshair tooltip -->
+          <div class="chart-tooltip" id="chartTooltip">
+            <div class="ctt-header">
+              <span class="ctt-time" id="cttTime"></span>
+              <span class="ctt-badge" id="cttBadge"></span>
+            </div>
+            <div class="ctt-price" id="cttPrice"></div>
+            <div class="ctt-change" id="cttChange"></div>
+          </div>
+        </div>
+
+        <!-- Area Heatmap -->
+        <div class="pulse-heatmap">
+          <h4 class="heatmap-title">🗺️ Area Heat Map</h4>
+          <div class="heatmap-grid" id="heatmapGrid"></div>
+          <div class="heatmap-legend">
+            <span class="hleg cool">Cool</span>
+            <div class="hleg-bar"></div>
+            <span class="hleg hot">Hot 🔥</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Book -->
+      <div class="orderbook reveal">
+        <h4 class="ob-title">📋 Latest Transactions</h4>
+        <div class="ob-header">
+          <span>Property</span><span>Area</span><span>Type</span><span>Price (AED)</span><span>Change</span>
+        </div>
+        <div class="ob-body" id="obBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DREAM HOME AI MATCHER ========== -->
+  <section class="ai-matcher" id="matcher">
+    <div class="am-bg"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">🤖 AI Powered</span>
+        <h2 class="section-title">Discover Your <em>Property Persona</em></h2>
+        <p class="section-desc">Answer 3 questions. Our AI finds your perfect match in seconds.</p>
+      </div>
+
+      <div class="am-wrapper reveal">
+        <!-- Progress Bar -->
+        <div class="am-progress">
+          <div class="am-prog-bar" id="amProgBar" style="width:0%"></div>
+          <span class="am-prog-text" id="amProgText">Step 0 of 3</span>
+        </div>
+
+        <!-- Quiz Cards Container -->
+        <div class="am-cards" id="amCards">
+
+          <!-- Card 0: Intro -->
+          <div class="am-card active" data-card="0">
+            <div class="am-card-inner">
+              <div class="am-intro-icon">🏡</div>
+              <h3>What's Your <em>Property Persona?</em></h3>
+              <p>Our AI analyses your lifestyle preferences and matches you to the perfect Dubai property in under 10
+                seconds.</p>
+              <button class="am-start-btn" id="amStartBtn">Start the Match →</button>
+              <div class="am-trust">
+                <span>🔒 No signup needed</span>
+                <span>⚡ 10 seconds</span>
+                <span>🎯 95% accuracy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 1: Q1 -->
+          <div class="am-card" data-card="1">
+            <div class="am-card-inner">
+              <div class="am-q-num">01 <span>/ 03</span></div>
+              <h3>What's your <em>lifestyle vibe?</em></h3>
+              <div class="am-options" data-q="1">
+                <button class="am-opt" data-val="urban">🌆<span>City Hustler</span><em>Fast-paced, modern,
+                    central</em></button>
+                <button class="am-opt" data-val="serene">🌊<span>Serene Seeker</span><em>Waterfront, calm,
+                    peaceful</em></button>
+                <button class="am-opt" data-val="elite">👑<span>Luxury Elite</span><em>Prestige, exclusivity, wow
+                    factor</em></button>
+                <button class="am-opt" data-val="investor">📊<span>Smart Investor</span><em>ROI focused, growth
+                    potential</em></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Q2 -->
+          <div class="am-card" data-card="2">
+            <div class="am-card-inner">
+              <div class="am-q-num">02 <span>/ 03</span></div>
+              <h3>What's your <em>budget range?</em></h3>
+              <div class="am-options" data-q="2">
+                <button class="am-opt" data-val="entry">💼<span>AED 500K – 1.5M</span><em>Smart entry into the
+                    market</em></button>
+                <button class="am-opt" data-val="mid">🏠<span>AED 1.5M – 4M</span><em>Premium comfort
+                    living</em></button>
+                <button class="am-opt" data-val="luxury">✨<span>AED 4M – 10M</span><em>High-end luxury</em></button>
+                <button class="am-opt" data-val="ultra">🌟<span>AED 10M+</span><em>Ultra-premium, no
+                    limits</em></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Q3 -->
+          <div class="am-card" data-card="3">
+            <div class="am-card-inner">
+              <div class="am-q-num">03 <span>/ 03</span></div>
+              <h3>What matters most to <em>you?</em></h3>
+              <div class="am-options" data-q="3">
+                <button class="am-opt" data-val="view">🌅<span>Stunning Views</span><em>Skyline, sea, or desert
+                    vistas</em></button>
+                <button class="am-opt" data-val="space">📐<span>Space & Privacy</span><em>Large rooms, garden,
+                    pool</em></button>
+                <button class="am-opt" data-val="community">🤝<span>Vibrant Community</span><em>Amenities, cafes, parks
+                    nearby</em></button>
+                <button class="am-opt" data-val="return">💹<span>Strong ROI</span><em>Best rental yield in the
+                    area</em></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Card -->
+          <div class="am-card" data-card="result">
+            <div class="am-card-inner am-result-inner">
+              <div class="am-result-badge" id="amResultBadge">🏆</div>
+              <h3 class="am-result-title" id="amResultTitle">Your Match: <em id="amResultName">The City Maverick</em>
+              </h3>
+              <p class="am-result-desc" id="amResultDesc">Based on your lifestyle and goals, you thrive in modern
+                high-rise apartments at the heart of Dubai.</p>
+              <div class="am-result-card" id="amResultCard">
+                <img id="amResultImg" src="difc.png" alt="Match Property" />
+                <div class="am-result-info">
+                  <span class="am-match-pct" id="amMatchPct">94% Match</span>
+                  <h4 id="amResultProp">DIFC Skyline Apartment</h4>
+                  <p id="amResultLoc">📍 DIFC, Dubai</p>
+                  <p id="amResultPrice">From AED 1,200,000</p>
+                </div>
+              </div>
+              <div class="am-result-traits" id="amTraits"></div>
+              <div class="am-result-actions">
+                <button class="btn-primary" id="amEnquireBtn">Enquire About This Property</button>
+                <button class="am-retry-btn" id="amRetryBtn">↺ Retake Quiz</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Confetti Canvas -->
+        <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Testimonials</span>
+        <h2 class="section-title">What Our <em>Clients Say</em></h2>
+      </div>
+
+      <div class="testi-slider" id="testiSlider">
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"LuxEstate transformed our home search from a stressful experience into an exciting
+              journey. Their team was professional, patient, and truly understood what we needed."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">A</div>
+              <div>
+                <strong>Ahmed Al Rashid</strong>
+                <span>Purchased – Downtown Dubai</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Found my dream villa in Palm Jumeirah through LuxEstate. The process was seamless and
+              transparent. I couldn't be happier with my investment!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">S</div>
+              <div>
+                <strong>Sarah Mitchell</strong>
+                <span>Purchased – Palm Jumeirah</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"As a first-time buyer, I was nervous. But LuxEstate's experts held my hand through
+              every step. They truly care about their clients."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">R</div>
+              <div>
+                <strong>Ravi Krishnan</strong>
+                <span>Purchased – Dubai Marina</span>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">"Exceptional service from start to finish. The team at LuxEstate are true
+              professionals who go above and beyond to ensure client satisfaction."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">F</div>
+              <div>
+                <strong>Fatima Al Zaabi</strong>
+                <span>Invested – DIFC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-controls">
+        <button class="testi-btn" id="testiPrev" aria-label="Previous">←</button>
+        <div class="testi-dots" id="testiDots">
+          <button class="testi-dot active" data-index="0"></button>
+          <button class="testi-dot" data-index="1"></button>
+          <button class="testi-dot" data-index="2"></button>
+          <button class="testi-dot" data-index="3"></button>
+        </div>
+        <button class="testi-btn" id="testiNext" aria-label="Next">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Visuals</span>
+        <h2 class="section-title">LuxEstate <em>Showcase</em></h2>
+        <p class="section-desc">Experience the pinnacle of luxury living through our interactive visual showcase. Hover to explore.</p>
+      </div>
+
+      <div class="gallery-expanding reveal">
+        <div class="g-panel active" style="background-image: url('hero.png');">
+          <div class="g-panel-content">
+            <span class="g-icon">✨</span>
+            <h3>Downtown Penthouse</h3>
+            <p>Panoramic views of the iconic skyline</p>
+          </div>
+        </div>
+        <div class="g-panel" style="background-image: url('marina.png');">
+          <div class="g-panel-content">
+            <span class="g-icon">🌊</span>
+            <h3>Marina Heights</h3>
+            <p>Waterfront living at its finest</p>
+          </div>
+        </div>
+        <div class="g-panel" style="background-image: url('difc.png');">
+          <div class="g-panel-content">
+            <span class="g-icon">🏙️</span>
+            <h3>DIFC Skyline</h3>
+            <p>The heart of financial luxury</p>
+          </div>
+        </div>
+        <div class="g-panel" style="background-image: url('villa.png');">
+          <div class="g-panel-content">
+            <span class="g-icon">🌴</span>
+            <h3>Palm Jumeirah</h3>
+            <p>Exclusive island residences</p>
+          </div>
+        </div>
+        <div class="g-panel" style="background-image: url('penthouse.png');">
+          <div class="g-panel-content">
+            <span class="g-icon">👑</span>
+            <h3>The Atlantis</h3>
+            <p>Unmatched premium aesthetics</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AGENTS ========== -->
+  <section class="agents" id="agents">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Team</span>
+        <h2 class="section-title">Meet Our <em>Expert Agents</em></h2>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card reveal">
+          <div class="agent-img-wrap">
+            <img src="agent1.png" alt="Khalid Al Mansoori" class="agent-photo" />
+            <div class="agent-social">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="Email">@</a>
+            </div>
+          </div>
+          <h3>Khalid Al Mansoori</h3>
+          <span class="agent-role">Senior Property Consultant</span>
+          <p class="agent-sales">🏠 142 Sales</p>
+        </div>
+        <div class="agent-card reveal" style="transition-delay:0.15s">
+          <div class="agent-img-wrap">
+            <img src="agent2.png" alt="Nina Petrov" class="agent-photo" />
+            <div class="agent-social">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="Email">@</a>
+            </div>
+          </div>
+          <h3>Nina Petrov</h3>
+          <span class="agent-role">Luxury Villa Specialist</span>
+          <p class="agent-sales">🏠 98 Sales</p>
+        </div>
+        <div class="agent-card reveal" style="transition-delay:0.3s">
+          <div class="agent-img-wrap">
+            <img src="agent3.png" alt="James Rodrigues" class="agent-photo" />
+            <div class="agent-social">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="Email">@</a>
+            </div>
+          </div>
+          <h3>James Rodrigues</h3>
+          <span class="agent-role">Investment Property Expert</span>
+          <p class="agent-sales">🏠 215 Sales</p>
+        </div>
+        <div class="agent-card reveal" style="transition-delay:0.45s">
+          <div class="agent-img-wrap">
+            <img src="agent4.png" alt="Layla Khalid" class="agent-photo" />
+            <div class="agent-social">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="Email">@</a>
+            </div>
+          </div>
+          <h3>Layla Khalid</h3>
+          <span class="agent-role">Residential Sales Director</span>
+          <p class="agent-sales">🏠 178 Sales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== CURATED LIFESTYLES ========== -->
+  <section class="lifestyles section-dark" id="lifestyles">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Find Your Element</span>
+        <h2 class="section-title">Curated <em>Lifestyles</em></h2>
+        <p class="section-desc">Experience our signature lifestyle collections. Hover to explore the exclusive environments we offer.</p>
+      </div>
+
+      <div class="lifestyle-accordion reveal">
+        <!-- Item 1 -->
+        <div class="ls-item" style="background-image: url('marina.png');">
+          <div class="ls-overlay"></div>
+          <div class="ls-content">
+            <div class="ls-icon">🌊</div>
+            <h3>Waterfront Living</h3>
+            <p>Wake up to the gentle sound of waves and breathtaking Marina sunsets. Exclusive yacht clubs and pristine beaches await.</p>
+            <a href="explore.html?loc=marina" class="btn-outline ls-btn">Explore Marina</a>
+          </div>
+          <div class="ls-title-vertical">Waterfront Living</div>
+        </div>
+        <!-- Item 2 -->
+        <div class="ls-item" style="background-image: url('penthouse.png');">
+          <div class="ls-overlay"></div>
+          <div class="ls-content">
+            <div class="ls-icon">🏙️</div>
+            <h3>Urban Skyline</h3>
+            <p>The pinnacle of city life. Panoramic views from ultra-luxury penthouses right in the heart of Downtown Dubai.</p>
+            <a href="explore.html?loc=downtown" class="btn-outline ls-btn">Explore Downtown</a>
+          </div>
+          <div class="ls-title-vertical">Urban Skyline</div>
+        </div>
+        <!-- Item 3 -->
+        <div class="ls-item" style="background-image: url('villa.png');">
+          <div class="ls-overlay"></div>
+          <div class="ls-content">
+            <div class="ls-icon">🌴</div>
+            <h3>Private Retreats</h3>
+            <p>Spacious, serene, and absolutely private. Discover our collection of signature villas nestled in exclusive gated communities.</p>
+            <a href="explore.html?loc=palm" class="btn-outline ls-btn">Explore Villas</a>
+          </div>
+          <div class="ls-title-vertical">Private Retreats</div>
+        </div>
+        <!-- Item 4 -->
+        <div class="ls-item" style="background-image: url('difc.png');">
+          <div class="ls-overlay"></div>
+          <div class="ls-content">
+            <div class="ls-icon">💼</div>
+            <h3>Financial Hub</h3>
+            <p>Where business meets unmatched luxury. Premium residences just steps away from top-tier corporate centers and fine dining.</p>
+            <a href="explore.html?loc=difc" class="btn-outline ls-btn">Explore DIFC</a>
+          </div>
+          <div class="ls-title-vertical">Financial Hub</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MYSTERY BOX ========== -->
+  <section class="mystery-box section-dark" id="mystery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Curiosity & Excitement</span>
+        <h2 class="section-title">The Secret <em>Key</em></h2>
+        <p class="section-desc">Unlock our most exclusive, off-market property of the week.</p>
+      </div>
+      
+      <div class="mystery-card reveal" id="mysteryCard">
+        <!-- Locked State -->
+        <div class="mystery-locked" id="mysteryLocked">
+          <div class="keyhole-wrapper">
+            <div class="hardware-plate">
+              <div class="screw top"></div>
+              <div class="screw bottom"></div>
+              <div class="keyhole-shape">
+                <img src="difc.png" alt="Mystery Property" class="blurred-bg">
+                <div class="inner-shadow"></div>
+              </div>
+            </div>
+            <div class="glow-effect"></div>
+          </div>
+          <div class="mystery-clue">
+            <h3>Top Secret Dubai Listings 🤫</h3>
+            <p class="clue-text">"Iconic Skyline Views. High ROI. Premium Amenities. Open the Door to Dubai's Finest!"</p>
+            <button class="btn-gold unlock-btn" id="unlockBtn">
+              <span class="lock-icon">🔒</span> Unlock to Reveal
+            </button>
+          </div>
+        </div>
+        
+        <!-- Unlocked State (Hidden initially) -->
+        <div class="mystery-unlocked hidden" id="mysteryUnlocked">
+          <div class="revealed-header">
+            <h3>Just Revealed: Top 3 Dubai Exclusives!</h3>
+            <p>You have unlocked our highly sought-after properties for this week.</p>
+          </div>
+          <div class="revealed-grid">
+            <!-- Property 1 -->
+            <div class="revealed-item">
+              <div class="revealed-img-wrap">
+                <img src="difc.png" alt="DIFC Skyline" class="revealed-img">
+                <div class="badge-new">Hot!</div>
+              </div>
+              <div class="revealed-info">
+                <h4>DIFC Skyline Apartment</h4>
+                <p class="revealed-loc">📍 DIFC, Dubai</p>
+                <p class="revealed-price">From AED 1.2M</p>
+                <button class="btn-primary full-width prop-cta">Enquire</button>
+              </div>
+            </div>
+            <!-- Property 2 -->
+            <div class="revealed-item">
+              <div class="revealed-img-wrap">
+                <img src="marina.png" alt="Marina Heights" class="revealed-img">
+              </div>
+              <div class="revealed-info">
+                <h4>Marina Heights</h4>
+                <p class="revealed-loc">📍 Dubai Marina</p>
+                <p class="revealed-price">From AED 1.85M</p>
+                <button class="btn-primary full-width prop-cta">Enquire</button>
+              </div>
+            </div>
+            <!-- Property 3 -->
+            <div class="revealed-item">
+              <div class="revealed-img-wrap">
+                <img src="penthouse.png" alt="Palm Penthouse" class="revealed-img">
+              </div>
+              <div class="revealed-info">
+                <h4>Palm Penthouse</h4>
+                <p class="revealed-loc">📍 Palm Jumeirah</p>
+                <p class="revealed-price">From AED 4.75M</p>
+                <button class="btn-primary full-width prop-cta">Enquire</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <!-- Animated background orbs -->
+    <div class="contact-orb contact-orb-1"></div>
+    <div class="contact-orb contact-orb-2"></div>
+    <div class="contact-orb contact-orb-3"></div>
+
+    <div class="container contact-grid">
+
+      <!-- Left: Info Panel -->
+      <div class="contact-info reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Find Your <em>Perfect Home</em></h2>
+        <p class="section-desc">Our expert agents are ready around the clock. Reach out and we'll turn your dream into reality within 2 hours.</p>
+
+        <div class="contact-details">
+          <div class="contact-item ci-animate" style="--ci-delay: 0.1s">
+            <div class="contact-icon ci-icon">
+              <span>📍</span>
+            </div>
+            <div>
+              <strong>Address</strong>
+              <span>Floor 28, Emaar Square, Downtown Dubai, UAE</span>
+            </div>
+          </div>
+          <div class="contact-item ci-animate" style="--ci-delay: 0.2s">
+            <div class="contact-icon ci-icon">
+              <span>📞</span>
+            </div>
+            <div>
+              <strong>Phone</strong>
+              <span>+971 4 123 4567</span>
+            </div>
+          </div>
+          <div class="contact-item ci-animate" style="--ci-delay: 0.3s">
+            <div class="contact-icon ci-icon">
+              <span>✉️</span>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <span>hello@luxestate.ae</span>
+            </div>
+          </div>
+          <div class="contact-item ci-animate" style="--ci-delay: 0.4s">
+            <div class="contact-icon ci-icon">
+              <span>🕐</span>
+            </div>
+            <div>
+              <strong>Working Hours</strong>
+              <span>Sun – Thu: 9:00 AM – 7:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated trust badges -->
+        <div class="contact-trust">
+          <div class="trust-badge">
+            <span class="trust-number" data-target="2000">0</span><span>+</span>
+            <p>Happy Clients</p>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-number" data-target="98">0</span><span>%</span>
+            <p>Satisfaction Rate</p>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-number" data-target="20">0</span><span>yr</span>
+            <p>Experience</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Animated Form -->
+      <form class="contact-form reveal" id="contactForm" style="transition-delay:0.25s">
+        <div class="form-glow-line"></div>
+        <h3 class="form-heading">Send Us a Message</h3>
+
+        <div class="form-row">
+          <div class="form-group floating-group">
+            <input type="text" id="fname" placeholder=" " required />
+            <label for="fname">First Name</label>
+            <div class="input-underline"></div>
+          </div>
+          <div class="form-group floating-group">
+            <input type="text" id="lname" placeholder=" " required />
+            <label for="lname">Last Name</label>
+            <div class="input-underline"></div>
+          </div>
+        </div>
+
+        <div class="form-group floating-group">
+          <input type="email" id="email" placeholder=" " required />
+          <label for="email">Email Address</label>
+          <div class="input-underline"></div>
+        </div>
+
+        <div class="form-group floating-group">
+          <input type="tel" id="phone" placeholder=" " />
+          <label for="phone">Phone Number</label>
+          <div class="input-underline"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="interest" class="static-label">I'm interested in</label>
+          <select id="interest">
+            <option>Buying a Property</option>
+            <option>Renting a Property</option>
+            <option>Selling a Property</option>
+            <option>Investment Advice</option>
+          </select>
+        </div>
+
+        <div class="form-group floating-group">
+          <textarea id="message" rows="4" placeholder=" "></textarea>
+          <label for="message">Your Message</label>
+          <div class="input-underline"></div>
+        </div>
+
+        <button type="submit" class="btn-primary full-width contact-submit" id="submitBtn">
+          <span class="submit-text">Send Message</span>
+          <span class="submit-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m22 2-7 20-4-9-9-4z" />
+              <path d="M22 2 11 13" />
+            </svg>
+          </span>
+          <span class="submit-ripple"></span>
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-icon">⬡</span>
+            <span>LuxEstate</span>
+          </div>
+          <p>Your trusted partner in luxury real estate. Turning dreams into addresses since 2004.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook">f</a>
+            <a href="#" class="social-icon" aria-label="Instagram">in</a>
+            <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">li</a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Property Types</h4>
+          <ul>
+            <li><a href="#">Apartments</a></li>
+            <li><a href="#">Villas</a></li>
+            <li><a href="#">Penthouses</a></li>
+            <li><a href="#">Townhouses</a></li>
+            <li><a href="#">Commercial</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Newsletter</h4>
+          <p class="newsletter-text">Get the latest listings and market insights delivered to your inbox.</p>
+          <div class="newsletter-input">
+            <input type="email" placeholder="Your email address" id="newsletterEmail" />
+            <button aria-label="Subscribe">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2024 LuxEstate. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/971501234567" class="whatsapp-btn" target="_blank" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+    </svg>
+  </a>
+
+  <!-- Sign In Modal -->
+  <div class="modal-overlay" id="loginModalOverlay">
+    <div class="modal" id="loginModal">
+      <button class="modal-close" id="loginModalClose">✕</button>
+      <div class="modal-body">
+        <h2>Sign In</h2>
+        <p>Welcome back! Sign in to access your saved properties and bookings.</p>
+        <form id="loginForm">
+          <input type="email" placeholder="Email Address" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit" class="btn-primary full-width">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Details Modal -->
+  <div class="modal-overlay" id="detailsModalOverlay">
+    <div class="modal details-modal" id="detailsModal">
+      <button class="modal-close" id="detailsModalClose">✕</button>
+      <div class="details-modal-grid">
+        <div class="details-image-container">
+          <img id="detailsModalImg" src="" alt="Property" />
+          <div class="details-badge" id="detailsModalBadge">Featured</div>
+        </div>
+        <div class="details-content">
+          <div class="details-header">
+            <h2 id="detailsModalTitle">Property Title</h2>
+            <div class="details-price" id="detailsModalPrice">AED 0</div>
+          </div>
+          <p class="details-location" id="detailsModalLoc">📍 Location</p>
+          <div class="details-rating" id="detailsModalRating">⭐ 4.9</div>
+          
+          <div class="details-specs" id="detailsModalSpecs">
+            <!-- Populated via JS -->
+          </div>
+          
+          <div class="details-desc">
+            <h3>About this Property</h3>
+            <p>Experience luxury living with modern amenities, stunning views, and exquisite design. This property offers the perfect blend of comfort and style.</p>
+          </div>
+          
+          <button class="btn-primary full-width" id="detailsModalBookBtn">Book a Viewing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="propertyModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-body">
+        <h2>Schedule a Viewing</h2>
+        <p>Fill in your details and we'll get back to you within 2 hours.</p>
+        <div class="modal-property-info" id="modalPropertyInfo" style="display:none;margin:0.6rem 0 1rem;padding:0.6rem;border-radius:8px;background:rgba(13,31,60,0.04);">
+          <div style="display:flex;gap:0.75rem;align-items:center;">
+            <img id="modalPropertyImg" src="" alt="" style="width:64px;height:48px;object-fit:cover;border-radius:6px;flex:0 0 64px;" />
+            <div style="flex:1;min-width:0;">
+              <h3 id="modalPropertyTitle" style="margin:0;font-size:1rem;line-height:1.2">Property</h3>
+              <p id="modalPropertyLoc" style="margin:0.15rem 0 0;color:#666;font-size:0.92rem"></p>
+            </div>
+            <div id="modalPropertyPrice" style="font-weight:700;color:#c9a84c;flex:0 0 auto;">AED —</div>
+          </div>
+        </div>
+        <form id="modalForm">
+          <input type="hidden" name="property" id="modalPropertyInput" />
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="tel" placeholder="Phone Number" />
+          <input type="date" />
+          <button type="submit" class="btn-primary full-width">Book Viewing</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
